@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Web Kita</title>
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="favicon-32x32.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      min-height:100vh;
+      background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e')
+      center/cover no-repeat;
+      font-family:Arial, sans-serif;
+    }
+
+  
+
+  .hamburger:active{
+    transform:scale(0.92);
+  }
+
+  .hamburger span{
+    display:block;
+    width:100%;
+    height:3px;
+    background:white;
+    border-radius:2px;
+    transition:0.3s ease;
+    transform-origin:center;
+  }
+
+  /* GARIS 1 */
+  .hamburger.active span:nth-child(1){
+    transform:
+      translateY(10px)
+      rotate(45deg);
+  }
+
+  /* GARIS 2 */
+  .hamburger.active span:nth-child(2){
+    opacity:0;
+  }
+
+  /* GARIS 3 */
+  .hamburger.active span:nth-child(3){
+    transform:
+      translateY(-6px)
+      rotate(-45deg); 
+  }
+
+
+    /* MENU ACTIVE */
+    .mobile-menu.active{
+      right:0;
+    }
+
+
+    .mobile-menu a:hover{
+      color:#f5a623;
+    }
+
+    .mobile-menu a:active{
+      transform:scale(0.95);
+    }
+
+
+  
+
+
+
+  </style>
+ 
+</head>
+
+<body>
+
+<header
+  class="
+  fixed top-0 left-0 w-full z-50
+  relative
+  h-[65px] lg:h-[80px]
+
+  bg-[rgba(20,40,80,0.45)]
+  backdrop-blur-md
+
+  flex items-center
+  "
+>
+
+  <!-- LOGO ABSOLUTE LEFT -->
+  <div class="
+    absolute left-2 lg:left-5
+    flex items-center
+    ">
+
+    <img
+      src="logo-brand1.png"
+      alt="logo"
+
+      class="
+      h-[42px]
+      md:h-[50px]
+      lg:h-[70px]
+      "
+    >
+
+  </div>
+
+
+<!-- TITLE CENTER -->
+<div class="
+  absolute left-1/2
+  -translate-x-1/2
+
+  lg:static
+  lg:translate-x-0
+  <!-- UBAH NILAI INI UNTUK MENGATUR JARAK DARI LOGO KE TULISAN -->
+  lg:ml-[260px]  
+  ">
+
+  <span class="
+    text-white
+    font-bold
+    whitespace-nowrap
+
+    text-[22px]
+    md:text-[30px]
+    lg:text-[45px]
+    ">
+    JUAL RUMAH
+  </span>
+
+</div>
+
+
+  <!-- MENU DESKTOP RIGHT -->
+  <nav class="
+    hidden lg:flex
+
+    absolute right-5
+
+    items-center
+    gap-8
+
+    text-white
+    text-lg
+    ">
+
+    <a
+      href="#"
+      class="
+      hover:text-[#f5a623]
+      active:scale-95
+      transition-all duration-200
+      "
+    >
+      Home
+    </a>
+
+    <a
+      href="#"
+      class="
+      hover:text-[#f5a623]
+      active:scale-95
+      transition-all duration-200
+      "
+    >
+      Tentang
+    </a>
+
+    <a
+      href="#"
+      class="
+      hover:text-[#f5a623]
+      active:scale-95
+      transition-all duration-200
+      "
+    >
+      Property
+    </a>
+
+    <a
+      href="#"
+      class="
+      hover:text-[#f5a623]
+      active:scale-95
+      transition-all duration-200
+      "
+    >
+      Kontak
+    </a>
+
+  </nav>
+
+
+  <!-- HAMBURGER MOBILE -->
+  <div
+    id="hamburger"
+
+    class="
+    hamburger
+    lg:hidden
+
+    absolute right-3
+
+    w-[28px]
+
+    flex flex-col
+    gap-[5px]
+
+    cursor-pointer
+    "
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+</header>
+
+
+  <!-- MENU HAMBURGER -->
+  <nav
+    id="mobileMenu"
+
+    class="
+    mobile-menu
+
+    fixed top-[65px] right-[-100%]
+
+    lg:hidden
+
+    w-[190px]
+    sm:w-[220px]
+    h-[calc(100vh_-_65px)]
+
+    flex flex-col gap-5
+
+    p-[30px]
+
+    bg-gradient-to-bl
+    from-[rgba(20,40,80,0.96)]
+    to-[rgba(10,20,40,0.98)]
+
+    backdrop-blur-md
+
+    transition-all duration-300
+
+    z-40
+    "
+  >
+  <a href="#" class="
+    text-white
+    text-[15px]
+    font-medium
+    border-b border-white/30
+    pb-3
+    transition-all duration-200
+    ">
+    Home
+  </a>
+
+  <a href="#" class="
+    text-white
+    text-[15px]
+    font-medium
+    border-b border-white/30
+    pb-3
+    transition-all duration-200
+    ">
+    Tentang
+  </a>
+
+  <a href="#" class="
+    text-white
+    text-[15px]
+    font-medium
+    border-b border-white/30
+    pb-3
+    transition-all duration-200
+    ">
+    Property
+  </a>
+
+  <a href="#" class="
+    text-white
+    text-[15px]
+    font-medium
+    border-b border-white/30
+    pb-3
+    transition-all duration-200
+    ">
+    Kontak
+  </a>
+
+</nav>
+
+
+<script>
+
+const hamburger = document.getElementById("hamburger");
+const mobileMenu = document.getElementById("mobileMenu");
+
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  mobileMenu.classList.toggle("active");
+});
+
+</script>
+
+</body>
+</html>
