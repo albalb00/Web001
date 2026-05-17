@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Web Kita</title>
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="favicon-32x32.png">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      min-height:100vh;
+      background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e')
+      center/cover no-repeat;
+      background-position:center;
+      background-size:cover;
+      background-repeat:no-repeat;
+      font-family:Arial, sans-serif;
+    }
+
+    /* HEADER */
+    header{
+      height:80px;
+      background:#23395d;
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+
+      padding:0 20px;
+
+      /* WARNA TRANSPARAN */
+      background:rgba(20,40,80,0.45);
+
+      /* EFEK KACA BURAM */
+      backdrop-filter:blur(10px);
+
+      /* agar safari support */
+      -webkit-backdrop-filter:blur(10px);
+
+      z-index:999;
+    }
+
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:white;
+    font-weight:bold;
+    font-size:45px;
+    white-space:nowrap;
+  }    
+
+  .brand img{
+    height:70px;
+    width:auto;
+    display:block;  
+  }
+
+    /* ==LARGE DISPLAY== */
+  @media (max-width:1024px){
+    header{
+      padding:0 18px;
+    }
+
+    .brand{
+      gap:8px;
+    }
+
+  }
+
+
+  /* ==MEDIUM DISPLAY== */
+
+  @media (max-width: 768px){
+
+    header{
+      padding-left:10px;
+      padding-right:10px;
+    }
+
+    .brand{
+      gap:6px;
+      font-size:30px;
+    }
+
+    .hamburger{
+        width:28px;
+    }
+
+    .hamburger span{
+        height:3px;
+    }
+
+  }
+    
+  /* ==SMALL DISPLAY== */
+
+  @media (max-width:480px){
+
+    header{
+      padding-left:8px;
+      padding-right:8px;
+    }
+
+    .brand{
+      font-size:clamp(18px, 5vw, 22px);
+    }
+
+  }
+
+  /* HAMBURGER */
+  .hamburger{
+    width:35px;
+    cursor:pointer;
+    display:flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .hamburger span{
+    display:block;
+    height:4px;
+    background:white;
+    border-radius:2px;
+  }
+
+  </style>
+</head>
+
+<body>
+
+  <header>
+
+    <!-- LOGO + TEXT-->
+    <div class="brand">
+      <img src="logo brand1.png" alt="logo">
+      JUAL RUMAH
+    </div>
+
+    <!-- HAMBURGER -->
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </div>
+
+  </header>
+
+</body>
+</html>
