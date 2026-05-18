@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Web Kita</title>
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="favicon-32x32.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      min-height:100vh;
+      background:#ffffff;
+      font-family:Arial, sans-serif;
+    }
+
+  
+
+  .hamburger:active{
+    transform:scale(0.92);
+  }
+
+  .hamburger span{
+    display:block;
+    width:100%;
+    height:3px;
+    background:white;
+    border-radius:2px;
+    transition:0.3s ease;
+    transform-origin:center;
+  }
+
+  /* GARIS 1 */
+  .hamburger.active span:nth-child(1){
+    transform:
+      translateY(10px)
+      rotate(45deg);
+  }
+
+  /* GARIS 2 */
+  .hamburger.active span:nth-child(2){
+    opacity:0;
+  }
+
+  /* GARIS 3 */
+  .hamburger.active span:nth-child(3){
+    transform:
+      translateY(-6px)
+      rotate(-45deg); 
+  }
+
+
+    /* MENU ACTIVE */
+    .mobile-menu.active{
+      right:0;
+    }
+
+
+    .mobile-menu a:hover{
+      color:#f5a623;
+    }
+
+    .mobile-menu a:active{
+      transform:scale(0.95);
+    }
+
+
+.dot{
+
+  width:10px;
+  height:10px;
+
+  border-radius:999px;
+
+  background:#94a3b8;
+
+  transition:all 0.35s ease;
+
+}
+
+
+/* TABLET */
+@media (min-width:640px){
+
+  .dot{
+    width:12px;
+    height:12px;
+  }
+
+}
+
+
+/* DESKTOP */
+@media (min-width:1024px){
+
+  .dot{
+    width:14px;
+    height:14px;
+  }
+
+}
+
+
+.active-dot{
+
+  width:34px;
+
+  background:#2563eb;
+
+}
+
+
+
+/* TOUCH SWIPE SMOOTH */
+  #carouselTrack{
+    touch-action:auto;
+    user-select:none;
+    -webkit-user-select:none;
+    -webkit-touch-callout:none;
+    -webkit-overflow-scrolling:touch;
+  }
+
+
+
+
+
+
+  </style>
+ 
+</head>
+
+<body>
+
+<header
+  class="
+  fixed top-0 left-0 w-full z-[9999]
+  h-[65px] lg:h-[80px]
+
+  bg-[rgba(20,40,80,0.45)]
+  backdrop-blur-md
+
+  border-b border-white/10
+  shadow-[0_2px_10px_rgba(0,0,0,0.15)]
+
+  flex items-center
+  "
+>
+
+  <!-- LOGO ABSOLUTE LEFT -->
+  <div class="
+    absolute left-2 lg:left-5
+    flex items-center
+    ">
+
+    <img
+      src="logo-brand1.png"
+      alt="logo"
+
+      class="
+      h-[42px]
+      md:h-[50px]
+      lg:h-[70px]
+      "
+    >
+
+  </div>
+
+
+<!-- TITLE CENTER -->
+ <!-- UBAH NILAI lg:ml  UNTUK MENGATUR JARAK DARI LOGO KE TULISAN -->
+<div class="
+  absolute left-1/2
+  -translate-x-1/2
+
+  lg:static
+  lg:translate-x-0
+  
+  lg:ml-[260px]  
+  ">
+
+  <span class="
+    text-white
+    font-bold
+    whitespace-nowrap
+
+    text-[22px]
+    md:text-[30px]
+    lg:text-[45px]
+    ">
+    JUAL RUMAH
+  </span>
+
+</div>
+
+
+  <!-- MENU DESKTOP RIGHT -->
+  <nav class="
+    hidden lg:flex
+
+    absolute right-5
+
+    items-center
+    gap-8
+
+    text-white
+    text-lg
+    ">
+
+    <a
+      href="#"
+      class="
+      hover:text-[#f5a623]
+      active:scale-95
+      transition-all duration-200
+      "
+    >
+      Home
+    </a>
+
+    <a
+      href="#"
+      class="
+      hover:text-[#f5a623]
+      active:scale-95
+      transition-all duration-200
+      "
+    >
+      Tentang
+    </a>
+
+    <a
+      href="#"
+      class="
+      hover:text-[#f5a623]
+      active:scale-95
+      transition-all duration-200
+      "
+    >
+      Property
+    </a>
+
+    <a
+      href="#"
+      class="
+      hover:text-[#f5a623]
+      active:scale-95
+      transition-all duration-200
+      "
+    >
+      Kontak
+    </a>
+
+  </nav>
+
+
+  <!-- HAMBURGER MOBILE -->
+  <div
+    id="hamburger"
+
+    class="
+    hamburger
+    lg:hidden
+
+    absolute right-3
+
+    w-[28px]
+
+    flex flex-col
+    gap-[5px]
+
+    cursor-pointer
+    "
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+</header>
+
+  <!-- HERO IMAGE -->
+  <section class="
+    relative
+    z-0
+    w-full
+    h-screen
+    overflow-hidden
+    ">
+
+    <img
+      src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
+      alt="hero image"
+
+      class="
+      absolute
+      inset-0
+      w-full
+      h-full
+      object-cover
+      "
+    >
+
+  </section>
+
+
+
+ <!-- SOFT BLUE SECTION -->
+<section class="
+  w-full
+  bg-[#dbeafe]
+
+  flex
+  flex-col
+  items-center
+  justify-start
+
+  pt-[20px]
+  lg:pt-[40px]
+  pb-[100px]
+
+  overflow-hidden
+  ">
+
+  <!-- CAROUSEL CONTAINER -->
+  <div id="carouselContainer" 
+    class="
+    relative
+    w-full
+    overflow-hidden
+    ">
+
+    <!-- TRACK -->
+    <div
+      id="carouselTrack"
+
+      class="
+      flex
+      transition-transform
+      duration-500
+      ease-in-out
+      cursor-grab
+      active:cursor-grabbing
+      "
+    >
+
+      <!-- IMAGE 1 -->
+      <div class="
+        carousel-item
+        shrink-0
+
+        w-[92%]
+        sm:w-[85%]
+        lg:w-[62%]
+
+        px-2
+        sm:px-3
+      ">
+
+        <img
+          src="carousel_img_1.jpg"
+
+          class="
+          w-full
+
+          h-[260px]
+          sm:h-[380px]
+          lg:h-[420px]
+
+          object-cover
+          rounded-xl
+          "
+        >
+
+      </div>
+
+
+
+
+
+      <!-- IMAGE 2 -->
+      <div class="
+        carousel-item
+        shrink-0
+
+        w-[92%]
+        sm:w-[85%]
+        lg:w-[62%]
+
+        px-2
+        sm:px-3
+        ">
+
+        <img
+          src="carousel_img_2.jpg"
+
+          class="
+          w-full
+
+          h-[260px]
+          sm:h-[380px]
+          lg:h-[420px]
+
+          object-cover
+          rounded-xl
+          "
+        >
+
+      </div>
+
+
+
+
+
+      <!-- IMAGE 3 -->
+      <div class="
+        carousel-item
+        shrink-0
+
+        w-[92%]
+        sm:w-[85%]
+        lg:w-[62%]
+
+        px-2
+        sm:px-3
+        ">
+
+        <img
+          src="carousel_img_3.jpg"
+
+          class="
+          w-full
+
+          h-[260px]
+          sm:h-[380px]
+          lg:h-[420px]
+
+          object-cover
+          rounded-xl
+          "
+        >
+
+      </div>
+
+    </div>
+
+
+
+
+
+    <!-- LEFT BUTTON -->
+    <button
+      id="prevBtn"
+
+      class="
+      absolute
+      left-3
+      sm:left-5
+
+      top-1/2
+      -translate-y-1/2
+
+      z-20
+
+      w-[45px]
+      h-[45px]
+
+      sm:w-[60px]
+      sm:h-[60px]
+
+      rounded-full
+
+      bg-black/20
+      backdrop-blur-md
+
+      text-white
+
+      text-4xl
+      sm:text-5xl
+
+      flex
+      items-center
+      justify-center
+
+      hover:bg-black/30
+      transition-all
+      "
+    >
+      ‹
+    </button>
+
+
+
+
+
+    <!-- RIGHT BUTTON -->
+    <button
+      id="nextBtn"
+
+      class="
+      absolute
+      right-3
+      sm:right-5
+
+      top-1/2
+      -translate-y-1/2
+
+      z-20
+
+      w-[45px]
+      h-[45px]
+
+      sm:w-[60px]
+      sm:h-[60px]
+
+      rounded-full
+
+      bg-black/20
+      backdrop-blur-md
+
+      text-white
+
+      text-4xl
+      sm:text-5xl
+
+      flex
+      items-center
+      justify-center
+
+      hover:bg-black/30
+      transition-all
+      "
+    >
+      ›
+    </button>
+
+  </div>
+
+
+
+
+
+  <!-- DOTS -->
+  <div class="
+    flex
+    justify-center
+    items-center
+    gap-3
+    mt-6
+    sm:mt-8
+  ">
+
+    <button class="dot"></button>
+    <button class="dot active-dot"></button>
+    <button class="dot"></button>
+
+
+  </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+  <!-- MENU HAMBURGER -->
+  <nav
+    id="mobileMenu"
+
+    class="
+    mobile-menu
+
+    fixed top-[65px] right-[-100%]
+
+    lg:hidden
+
+    w-[190px]
+    sm:w-[220px]
+    h-[calc(100vh_-_65px)]
+
+    flex flex-col gap-5
+
+    p-[30px]
+
+    bg-gradient-to-bl
+    from-[rgba(20,40,80,0.96)]
+    to-[rgba(10,20,40,0.98)]
+
+    backdrop-blur-md
+
+    transition-all duration-300
+
+    z-40
+    "
+  >
+  <a href="#" class="
+    text-white
+    text-[15px]
+    font-medium
+    border-b border-white/30
+    pb-3
+    transition-all duration-200
+    ">
+    Home
+  </a>
+
+  <a href="#" class="
+    text-white
+    text-[15px]
+    font-medium
+    border-b border-white/30
+    pb-3
+    transition-all duration-200
+    ">
+    Tentang
+  </a>
+
+  <a href="#" class="
+    text-white
+    text-[15px]
+    font-medium
+    border-b border-white/30
+    pb-3
+    transition-all duration-200
+    ">
+    Property
+  </a>
+
+  <a href="#" class="
+    text-white
+    text-[15px]
+    font-medium
+    border-b border-white/30
+    pb-3
+    transition-all duration-200
+    ">
+    Kontak
+  </a>
+
+</nav>
+
+
+<script>
+
+const hamburger = document.getElementById("hamburger");
+const mobileMenu = document.getElementById("mobileMenu");
+
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  mobileMenu.classList.toggle("active");
+});
+
+
+
+
+/* =========================
+   CAROUSEL
+========================= */
+
+const track = document.getElementById("carouselTrack");
+const carouselContainer = document.getElementById("carouselContainer");
+
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+const dots = document.querySelectorAll(".dot");
+
+const slides = document.querySelectorAll(".carousel-item");
+
+let currentIndex = 0;
+
+let startX = 0;
+let endX = 0;
+
+let isScrolling = false;
+
+
+
+function updateCarousel(){
+
+  const slideWidth =
+    slides[0].offsetWidth;
+
+  const screenWidth =
+    window.innerWidth;
+
+
+
+  /* CENTER ACTIVE IMAGE */
+  const offset =
+    (screenWidth / 2)
+    -
+    (slideWidth / 2)
+    -
+    (currentIndex * slideWidth);
+
+
+
+
+  track.style.transform =
+    `translateX(${offset}px)`;
+
+
+
+  /* DOT ACTIVE */
+  dots.forEach((dot, index)=>{
+
+    if(index === currentIndex){
+
+      dot.classList.add("active-dot");
+
+    }
+
+    else{
+
+      dot.classList.remove("active-dot");
+
+    }
+
+  });
+
+
+
+
+  /* HIDE LEFT */
+  if(currentIndex === 0){
+
+    prevBtn.style.opacity = "0";
+    prevBtn.style.pointerEvents = "none";
+
+  }
+
+  else{
+
+    prevBtn.style.opacity = "1";
+    prevBtn.style.pointerEvents = "auto";
+
+  }
+
+
+
+
+  /* HIDE RIGHT */
+  if(currentIndex === slides.length - 1){
+
+    nextBtn.style.opacity = "0";
+    nextBtn.style.pointerEvents = "none";
+
+  }
+
+  else{
+
+    nextBtn.style.opacity = "1";
+    nextBtn.style.pointerEvents = "auto";
+
+  }
+
+}
+
+
+
+
+/* NEXT */
+nextBtn.addEventListener("click", ()=>{
+
+  if(currentIndex < slides.length - 1){
+
+    currentIndex++;
+
+    updateCarousel();
+
+  }
+
+});
+
+
+
+
+/* PREV */
+prevBtn.addEventListener("click", ()=>{
+
+  if(currentIndex > 0){
+
+    currentIndex--;
+
+    updateCarousel();
+
+  }
+
+});
+
+
+
+
+/* DOT CLICK */
+dots.forEach((dot, index)=>{
+
+  dot.addEventListener("click", ()=>{
+
+    currentIndex = index;
+
+    updateCarousel();
+
+  });
+
+});
+
+
+
+
+/* RESIZE */
+window.addEventListener("resize", ()=>{
+
+  updateCarousel();
+
+});
+
+
+
+/* =========================
+   MOBILE / TABLET SWIPE
+========================= */
+
+let touchStartX = 0;
+
+let touchStartY = 0;
+
+
+
+carouselContainer.addEventListener("touchstart", (e)=>{
+
+  /*
+    Kalau lebih dari 1 jari,
+    jangan aktifkan swipe carousel
+  */
+  if(e.touches.length > 1){
+    return;
+  }
+
+
+
+  touchStartX = e.touches[0].clientX;
+
+  touchStartY = e.touches[0].clientY;
+
+}, { passive:true });
+
+
+
+
+
+carouselContainer.addEventListener("touchend", (e)=>{
+
+  /*
+    Kalau pinch / multi touch,
+    jangan swipe carousel
+  */
+  if(e.changedTouches.length > 1){
+    return;
+  }
+
+
+
+  const touchEndX =
+    e.changedTouches[0].clientX;
+
+  const touchEndY =
+    e.changedTouches[0].clientY;
+
+
+
+
+  const deltaX =
+    touchStartX - touchEndX;
+
+  const deltaY =
+    touchStartY - touchEndY;
+
+
+
+
+  /*
+    Kalau vertical swipe lebih dominan,
+    anggap scroll page biasa
+  */
+  if(Math.abs(deltaY) > Math.abs(deltaX)){
+    return;
+  }
+
+
+
+
+  /*
+    SWIPE LEFT → NEXT
+  */
+  if(deltaX > 45){
+
+    if(currentIndex < slides.length - 1){
+
+      currentIndex++;
+
+      updateCarousel();
+
+    }
+
+  }
+
+
+
+
+  /*
+    SWIPE RIGHT → PREV
+  */
+  else if(deltaX < -45){
+
+    if(currentIndex > 0){
+
+      currentIndex--;
+
+      updateCarousel();
+
+    }
+
+  }
+
+}, { passive:true });
+
+
+
+
+
+
+
+
+
+/* =========================
+   TRACKPAD SWIPE
+========================= */
+
+let lastSwipeTime = 0;
+
+const SWIPE_COOLDOWN = 420;
+
+const SWIPE_THRESHOLD = 45;
+
+
+
+track.addEventListener("wheel", (e)=>{
+
+  /*
+    Kalau vertical scroll lebih dominan,
+    biarkan page scroll normal
+  */
+  if(Math.abs(e.deltaY) > Math.abs(e.deltaX)){
+    return;
+  }
+
+
+
+  /*
+    Block horizontal swipe browser
+  */
+  e.preventDefault();
+
+
+
+
+  const now = Date.now();
+
+
+
+
+  /*
+    Prevent multiple slide
+    dalam 1 gesture
+  */
+  if(now - lastSwipeTime < SWIPE_COOLDOWN){
+    return;
+  }
+
+
+
+
+  /*
+    SWIPE LEFT → NEXT
+  */
+  if(e.deltaX > SWIPE_THRESHOLD){
+
+    if(currentIndex < slides.length - 1){
+
+      currentIndex++;
+
+      updateCarousel();
+
+      lastSwipeTime = now;
+
+    }
+
+  }
+
+
+
+
+  /*
+    SWIPE RIGHT → PREV
+  */
+  else if(e.deltaX < -SWIPE_THRESHOLD){
+
+    if(currentIndex > 0){
+
+      currentIndex--;
+
+      updateCarousel();
+
+      lastSwipeTime = now;
+
+    }
+
+  }
+
+}, { passive:false });
+
+
+
+
+
+
+
+
+
+
+/* INITIAL */
+updateCarousel();
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
