@@ -1,0 +1,1924 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+
+  <title>Web Kita</title>
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="favicon-32x32.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      min-height:100vh;
+      background:#ffffff;
+      font-family:Arial, sans-serif;
+    }
+
+  
+
+  .hamburger:active{
+    transform:scale(0.92);
+  }
+
+  .hamburger span{
+    display:block;
+    width:100%;
+    height:3px;
+    background:white;
+    border-radius:2px;
+    transition:0.3s ease;
+    transform-origin:center;
+  }
+
+  /* GARIS 1 */
+  .hamburger.active span:nth-child(1){
+    transform:
+      translateY(10px)
+      rotate(45deg);
+  }
+
+  /* GARIS 2 */
+  .hamburger.active span:nth-child(2){
+    opacity:0;
+  }
+
+  /* GARIS 3 */
+  .hamburger.active span:nth-child(3){
+    transform:
+      translateY(-6px)
+      rotate(-45deg); 
+  }
+
+
+    /* MENU ACTIVE */
+    .mobile-menu.active{
+      right:0;
+    }
+
+
+    .mobile-menu a:hover{
+      color:#f5a623;
+    }
+
+    .mobile-menu a:active{
+      transform:scale(0.95);
+    }
+
+
+.dot{
+
+  width:10px;
+  height:10px;
+
+  border-radius:999px;
+
+  background:#94a3b8;
+
+  transition:all 0.35s ease;
+
+}
+
+
+/* TABLET */
+@media (min-width:640px){
+
+  .dot{
+    width:12px;
+    height:12px;
+  }
+
+}
+
+
+/* DESKTOP */
+@media (min-width:1024px){
+
+  .dot{
+    width:14px;
+    height:14px;
+  }
+
+}
+
+
+.active-dot{
+
+  width:34px;
+
+  background:#2563eb;
+
+}
+
+
+/* =========================
+   CAROUSEL SCALE EFFECT
+========================= */
+
+.carousel-item{
+
+  transition:
+      transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.38s ease,
+      filter 0.38s ease;
+      transform:scale(0.74);
+
+  opacity:0.55;
+  filter:brightness(0.8);
+  backface-visibility:hidden;
+
+}
+
+
+.carousel-item.active-slide{
+
+  transform:scale(1);
+
+  opacity:1;
+  filter:brightness(1);
+
+  z-index:5;
+
+}
+
+
+
+
+
+
+
+
+/* TOUCH SWIPE SMOOTH */
+  #carouselTrack{
+    touch-action:manipulation;
+    user-select:none;
+    -webkit-user-select:none;
+    -webkit-touch-callout:none;
+    will-change:transform;
+    transform:translateZ(0);
+  }
+
+
+
+/* LOCK BODY SCROLL */
+body.no-scroll{
+  overflow:hidden;
+}
+
+
+
+
+
+.carousel-item img{
+
+  -webkit-user-drag:none;
+
+  user-select:none;
+
+  pointer-events:none;
+
+}
+
+
+  </style>
+ 
+</head>
+
+<body>
+
+<header
+  class="
+  fixed top-0 left-0 w-full z-[9999]
+  h-[65px] lg:h-[80px]
+
+  bg-[rgba(20,40,80,0.45)]
+  backdrop-blur-md
+
+  border-b border-white/10
+  shadow-[0_2px_10px_rgba(0,0,0,0.15)]
+
+  flex items-center
+  "
+>
+
+  <!-- LOGO ABSOLUTE LEFT -->
+  <div class="
+    absolute left-2 lg:left-5
+    flex items-center
+    ">
+
+    <img
+      src="logo-brand1.png"
+      alt="logo"
+
+      class="
+      h-[42px]
+      md:h-[50px]
+      lg:h-[70px]
+      "
+    >
+
+  </div>
+
+
+<!-- TITLE CENTER -->
+ <!-- UBAH NILAI lg:ml  UNTUK MENGATUR JARAK DARI LOGO KE TULISAN -->
+<div class="
+  absolute left-1/2
+  -translate-x-1/2
+
+  lg:static
+  lg:translate-x-0
+  
+  lg:ml-[260px]  
+  ">
+
+  <span class="
+    text-white
+    font-bold
+    whitespace-nowrap
+
+    text-[22px]
+    md:text-[30px]
+    lg:text-[45px]
+    ">
+    JUAL RUMAH
+  </span>
+
+</div>
+
+
+  <!-- MENU DESKTOP RIGHT -->
+  <nav class="
+    hidden xl:flex
+
+    absolute right-5
+
+    items-center
+    gap-8
+
+    text-white
+    text-lg
+    ">
+
+    <a
+      href="#"
+      class="
+      hover:text-[#f5a623]
+      active:scale-95
+      transition-all duration-200
+      "
+    >
+      Beranda
+    </a>
+
+    <a
+      href="#"
+      class="
+      hover:text-[#f5a623]
+      active:scale-95
+      transition-all duration-200
+      "
+    >
+      Rumah
+    </a>
+
+    <a
+      href="#"
+      class="
+      hover:text-[#f5a623]
+      active:scale-95
+      transition-all duration-200
+      "
+    >
+      Ruko
+    </a>
+
+
+    <a
+      href="#"
+      class="
+      hover:text-[#f5a623]
+      active:scale-95
+      transition-all duration-200
+      "
+    >
+      Gudang
+    </a>
+
+     <a
+      href="kavling-komersial.html"
+      class="
+      hover:text-[#f5a623]
+      active:scale-95
+      transition-all duration-200
+      "
+    >
+      Kavling Komersial
+    </a>
+
+
+    <a
+      href="#"
+      class="
+      hover:text-[#f5a623]
+      active:scale-95
+      transition-all duration-200
+      "
+    >
+      Hubungi Kami
+    </a>
+
+  </nav>
+
+
+  <!-- HAMBURGER MOBILE -->
+  <div
+    id="hamburger"
+
+    class="
+    hamburger
+    xl:hidden
+
+    absolute right-3
+
+    w-[28px]
+
+    flex flex-col
+    gap-[5px]
+
+    cursor-pointer
+    "
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+</header>
+
+
+
+
+ <!-- CAROUSEL SECTION -->
+<section class="
+  w-full
+
+  bg-white
+
+  border-b border-gray-200
+
+  flex
+  flex-col
+  items-center
+  justify-start
+
+  pt-[65px]
+  lg:pt-[80px]
+ 
+  pb-[30px]
+
+  overflow-hidden
+  ">
+
+  <!-- CAROUSEL CONTAINER -->
+  <div id="carouselContainer" 
+    class="
+    relative
+    w-full
+    overflow-hidden
+    ">
+
+    <!-- TRACK -->
+    <div
+      id="carouselTrack"
+
+      class="
+      flex
+      cursor-grab
+      active:cursor-grabbing
+      "
+      >
+
+      <!-- IMAGE 1 -->
+      <div class="
+        carousel-item
+        shrink-0
+
+        w-[82%]
+        sm:w-[85%]
+        lg:w-[62%]
+
+        px-2
+        sm:px-3
+      ">
+
+        <img
+          src="carousel_img_1.jpg"
+
+          class="
+          w-full
+
+          h-[180px]
+          xs:h-[210px]
+          sm:h-[320px]
+          lg:h-[420px]
+
+          object-cover
+          rounded-xl
+          "
+        >
+
+      </div>
+
+
+
+
+
+      <!-- IMAGE 2 -->
+      <div class="
+        carousel-item
+        shrink-0
+
+        w-[82%]
+        sm:w-[85%]
+        lg:w-[62%]
+
+        px-2
+        sm:px-3
+        ">
+
+        <img
+          src="carousel_img_2.jpg"
+
+          class="
+          w-full
+
+          h-[180px]
+          xs:h-[210px]
+          sm:h-[320px]
+          lg:h-[420px]
+          object-cover
+          rounded-xl
+          "
+        >
+
+      </div>
+
+
+
+
+
+      <!-- IMAGE 3 -->
+      <div class="
+        carousel-item
+        shrink-0
+
+        w-[82%]
+        sm:w-[85%]
+        lg:w-[62%]
+
+        px-2
+        sm:px-3
+        ">
+
+        <img
+          src="carousel_img_3.jpg"
+
+          class="
+          w-full
+
+          h-[180px]
+          xs:h-[210px]
+          sm:h-[320px]
+          lg:h-[420px]
+
+          object-cover
+          rounded-xl
+          "
+        >
+
+      </div>
+
+    </div>
+
+
+
+
+
+    <!-- LEFT BUTTON -->
+    <button
+      id="prevBtn"
+
+      class="
+      absolute
+      left-3
+      sm:left-5
+
+      top-1/2
+      -translate-y-1/2
+
+      z-20
+
+      w-[45px]
+      h-[45px]
+
+      sm:w-[60px]
+      sm:h-[60px]
+
+      rounded-full
+
+      bg-black/20
+      backdrop-blur-md
+
+      text-white
+
+      text-4xl
+      sm:text-5xl
+
+      flex
+      items-center
+      justify-center
+
+      hover:bg-black/30
+      transition-all
+      "
+    >
+      ‹
+    </button>
+
+
+
+
+
+    <!-- RIGHT BUTTON -->
+    <button
+      id="nextBtn"
+
+      class="
+      absolute
+      right-3
+      sm:right-5
+
+      top-1/2
+      -translate-y-1/2
+
+      z-20
+
+      w-[45px]
+      h-[45px]
+
+      sm:w-[60px]
+      sm:h-[60px]
+
+      rounded-full
+
+      bg-black/20
+      backdrop-blur-md
+
+      text-white
+
+      text-4xl
+      sm:text-5xl
+
+      flex
+      items-center
+      justify-center
+
+      hover:bg-black/30
+      transition-all
+      "
+    >
+      ›
+    </button>
+
+  </div>
+
+
+
+
+
+  <!-- DOTS -->
+  <div class="
+    flex
+    justify-center
+    items-center
+    gap-3
+    mt-6
+    sm:mt-8
+  ">
+    <button class="dot"></button>
+    <button class="dot"></button>
+    <button class="dot"></button>
+
+
+  </div>
+
+</section>
+
+
+
+
+<!-- WELCOME SECTION -->
+<section class="
+  w-full
+  bg-[#0F4C81]
+  border-t border-white/10
+
+  px-6
+  sm:px-10
+  lg:px-20
+
+  py-[35px]
+  lg:py-[50px]
+">
+
+  <div class="
+    max-w-[1200px]
+    mx-auto
+    text-center
+  ">
+
+    <!-- TITLE -->
+    <h2 class="
+      text-white
+      font-bold
+
+      text-[28px]
+      sm:text-[38px]
+      lg:text-[52px]
+
+      leading-tight
+    ">
+      Selamat Datang di Website Jual Rumah
+    </h2>
+
+
+    <!-- DESCRIPTION -->
+    <p class="
+      mt-6
+
+      text-white/90
+
+      text-[16px]
+      sm:text-[18px]
+      lg:text-[22px]
+
+      leading-[1.9]
+
+      max-w-[950px]
+      mx-auto
+    ">
+      Kami menyediakan berbagai pilihan property terbaik untuk kebutuhan
+      hunian maupun bisnis Anda, mulai dari rumah tinggal, ruko modern,
+      gudang, hingga kavling komersial di lokasi strategis.
+
+      <br><br>
+
+      Dengan pilihan property yang beragam, kami siap membantu Anda
+      menemukan tempat yang sesuai untuk investasi, usaha, maupun
+      masa depan keluarga Anda. Jelajahi berbagai penawaran terbaik
+      dengan proses yang aman, mudah, dan terpercaya.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+
+
+<!-- ========================================
+     KAVLING KOMERSIAL UNGGULAN
+======================================== -->
+<section class="
+  w-full
+  bg-white
+
+  px-4
+  sm:px-6
+  lg:px-16
+
+  py-[40px]
+  lg:py-[70px]
+">
+
+  <!-- CONTAINER -->
+  <div class="
+    max-w-[1500px]
+    mx-auto
+  ">
+
+    <!-- TITLE -->
+    <div class="
+      text-center
+      mb-10
+      lg:mb-14
+    ">
+
+      <h2 class="
+        text-[#0F4C81]
+        font-bold
+
+        text-[28px]
+        sm:text-[38px]
+        lg:text-[52px]
+      ">
+        Kavling Komersial Unggulan
+      </h2>
+
+      <p class="
+        mt-4
+
+        text-gray-600
+
+        text-[15px]
+        sm:text-[18px]
+        lg:text-[21px]
+
+        leading-[1.8]
+
+        max-w-[850px]
+        mx-auto
+      ">
+        Pilihan kavling strategis dengan potensi investasi tinggi
+        di area berkembang dan lokasi bisnis terbaik.
+      </p>
+
+    </div>
+
+
+
+
+
+    <!-- PROPERTY LIST -->
+    <div class="
+      flex
+      flex-col
+
+      gap-5
+      lg:gap-7
+    ">
+
+      <!-- CARD -->
+      <div class="
+        group
+
+        bg-white
+
+        border border-gray-200
+
+        rounded-[24px]
+
+        overflow-hidden
+
+        shadow-[0_8px_24px_rgba(0,0,0,0.06)]
+
+        hover:shadow-[0_15px_35px_rgba(0,0,0,0.12)]
+
+        transition-all duration-300
+      ">
+
+        <!-- FLEX -->
+        <div class="
+          flex
+          flex-col
+
+          lg:flex-row
+        ">
+
+          <!-- IMAGE -->
+          <div class="
+            w-full
+            lg:w-[42%]
+
+            overflow-hidden
+          ">
+
+            <img
+              src="carousel_img_1.jpg"
+
+              class="
+                w-full
+
+                h-[240px]
+                sm:h-[300px]
+                lg:h-full
+
+                object-cover
+
+                group-hover:scale-[1.03]
+
+                transition-all duration-500
+              "
+            >
+
+          </div>
+
+
+
+
+
+          <!-- CONTENT -->
+          <div class="
+            flex-1
+
+            p-4
+            sm:p-6
+            lg:p-10
+
+            flex
+            flex-col
+            justify-center
+          ">
+
+            <!-- TITLE -->
+            <h3 class="
+              text-[#0F4C81]
+              font-bold
+
+              text-[24px]
+              sm:text-[30px]
+              lg:text-[38px]
+
+              leading-tight
+            ">
+              Kavling Komersial (Area Pusat)
+            </h3>
+
+
+
+
+
+            <!-- LOCATION -->
+            <p class="
+              mt-1
+
+              text-gray-600
+
+              text-[15px]
+              sm:text-[17px]
+              lg:text-[19px]
+            ">
+              Bumi Serpong Damai (BSD), Tangerang
+            </p>
+
+
+
+
+
+            <!-- INFO -->
+            <div class="
+              mt-4
+
+              flex
+              flex-wrap
+
+              gap-3
+              lg:gap-4
+            ">
+
+              <div class="
+                px-4
+                py-2
+
+                rounded-full
+
+                bg-[#eff6ff]
+
+                text-[#0F4C81]
+
+                text-[14px]
+                lg:text-[16px]
+
+                font-medium
+              ">
+                Luas 12 x 25
+              </div>
+
+              <div class="
+                px-4
+                py-2
+
+                rounded-full
+
+                bg-[#eff6ff]
+
+                text-[#0F4C81]
+
+                text-[14px]
+                lg:text-[16px]
+
+                font-medium
+              ">
+                SHM
+              </div>
+
+              <div class="
+                px-4
+                py-2
+
+                rounded-full
+
+                bg-[#eff6ff]
+
+                text-[#0F4C81]
+
+                text-[14px]
+                lg:text-[16px]
+
+                font-medium
+              ">
+                Area Strategis
+              </div>
+
+            </div>
+
+
+
+
+
+            <!-- PRICE -->
+            <div class="
+              mt-5
+            ">
+
+              <span class="
+                text-gray-500
+
+                text-[14px]
+                lg:text-[16px]
+              ">
+                Mulai dari
+              </span>
+
+              <h4 class="
+                mt-1
+
+                text-[#0F4C81]
+
+                font-bold
+
+                text-[30px]
+                sm:text-[36px]
+                lg:text-[44px]
+              ">
+                Rp 850 Juta
+              </h4>
+
+            </div>
+
+
+
+
+
+    
+
+            <!-- BUTTON GROUP -->
+            <div class="
+              mt-5
+
+              flex
+              flex-wrap
+
+              gap-3
+            ">
+              
+            <!-- LIHAT DETAIL -->
+<button class="
+  inline-flex
+  items-center
+  justify-center
+
+  px-7
+  py-3
+
+  rounded-full
+
+  bg-[#0F4C81]
+
+  text-white
+
+  text-[15px]
+  lg:text-[17px]
+
+  font-medium
+
+  hover:bg-[#0b3b63]
+
+  transition-all duration-300
+">
+  Lihat Detail
+</button>
+
+
+
+<!-- BUTTON WHATSAPP -->
+<button
+
+  class="
+    waButton
+
+    inline-flex
+    items-center
+    justify-center
+
+    gap-2
+
+    px-7
+    py-3
+
+    rounded-full
+
+    bg-[#0F4C81]
+
+    text-white
+
+    text-[15px]
+    lg:text-[17px]
+
+    font-medium
+
+    hover:bg-[#0b3b63]
+
+    transition-all duration-300
+  "
+
+  data-title="Kavling Komersial (Area Pusat)"
+  data-location="Bumi Serpong Damai (BSD), Tangerang"
+  data-size="12 x 25"
+>
+
+  <img
+    src="whatsapp-logo-white.png"
+    alt="Whatsapp"
+
+    class="
+      w-5
+      h-5
+      object-contain
+    "
+  >
+
+  Hubungi via Whatsapp
+
+</button>
+
+
+
+
+            </div>
+
+
+
+            
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+  <!-- MENU HAMBURGER -->
+  <nav
+    id="mobileMenu"
+
+    class="
+    mobile-menu
+
+    fixed top-[65px] right-[-100%]
+
+    xl:hidden
+
+    w-[190px]
+    sm:w-[220px]
+    h-[calc(100vh_-_65px)]
+
+    flex flex-col gap-5
+
+    p-[30px]
+
+    bg-gradient-to-bl
+    from-[rgba(20,40,80,0.96)]
+    to-[rgba(10,20,40,0.98)]
+
+    backdrop-blur-md
+
+    transition-all duration-300
+
+    z-40
+    "
+  >
+  <a href="#" class="
+    text-white
+    text-[20px]
+    font-medium
+    border-b border-white/30
+    pb-3
+    transition-all duration-200
+    ">
+    Beranda
+  </a>
+
+  <a href="#" class="
+    text-white
+    text-[20px]
+    font-medium
+    border-b border-white/30
+    pb-3
+    transition-all duration-200
+    ">
+    Rumah
+  </a>
+
+  <a href="#" class="
+    text-white
+    text-[20px]
+    font-medium
+    border-b border-white/30
+    pb-3
+    transition-all duration-200
+    ">
+    Ruko
+  </a>
+
+  <a href="#" class="
+    text-white
+    text-[20px]
+    font-medium
+    border-b border-white/30
+    pb-3
+    transition-all duration-200
+    ">
+    Gudang
+  </a>
+
+
+  <a href="kavling-komersial.html"  
+  class="
+    text-white
+    text-[20px]
+    font-medium
+    border-b border-white/30
+    pb-3
+    transition-all duration-200
+    ">
+    Kavling Komersial
+  </a>
+
+
+  <a href="https://wa.me/6281234567890?text=Halo,%20saya%20mengunjungi%20website%20dan%20sedang%20mencari%20property"
+
+  target="_blank"
+  
+  class="
+    text-white
+    text-[20px]
+    font-medium
+    border-b border-white/30
+    pb-3
+    transition-all duration-200
+    ">
+    Hubungi Kami (Whatsapp)
+  </a>
+
+
+
+  
+
+</div>
+
+
+</nav>
+
+
+<script>
+
+const hamburger = document.getElementById("hamburger");
+const mobileMenu = document.getElementById("mobileMenu");
+
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  mobileMenu.classList.toggle("active");
+});
+
+
+document.addEventListener("click", (e) => {
+
+  const clickedHamburger =
+    hamburger.contains(e.target);
+
+  const clickedMenu =
+    mobileMenu.contains(e.target);
+
+
+
+
+  /*
+    Jika klik di luar hamburger
+    dan di luar menu
+  */
+  if(
+    !clickedHamburger
+    &&
+    !clickedMenu
+  ){
+
+    hamburger.classList.remove("active");
+
+    mobileMenu.classList.remove("active");
+
+  }
+
+});
+
+
+
+
+/* =========================
+   CAROUSEL
+========================= */
+
+const track = document.getElementById("carouselTrack");
+const carouselContainer = document.getElementById("carouselContainer");
+
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+const dots = document.querySelectorAll(".dot");
+
+const slides = document.querySelectorAll(".carousel-item");
+
+let currentIndex = 0;
+
+let currentTranslate = 0;
+
+
+
+
+
+function updateCarousel(withAnimation = true){
+
+  currentTranslate =
+    getTranslateX(currentIndex);
+
+
+
+  /*
+    SMOOTH ANIMATION
+  */
+  if(withAnimation){
+
+    track.style.transition =
+      "transform 0.38s cubic-bezier(0.22, 1, 0.36, 1)";
+
+  }
+
+  else{
+
+    track.style.transition =
+      "none";
+
+  }
+
+
+
+  track.style.transform =
+    `translateX(${currentTranslate}px)`;
+
+
+  /*
+    ACTIVE IMAGE SCALE
+  */
+  slides.forEach((slide, index)=>{
+
+    if(index === currentIndex){
+
+      slide.classList.add("active-slide");
+
+    }
+
+    else{
+
+      slide.classList.remove("active-slide");
+
+    }
+
+  });
+
+
+
+
+  /*
+    DOT ACTIVE
+  */
+  dots.forEach((dot, index)=>{
+
+    if(index === currentIndex){
+
+      dot.classList.add("active-dot");
+
+    }
+
+    else{
+
+      dot.classList.remove("active-dot");
+
+    }
+
+  });
+
+
+
+
+  /*
+    HIDE LEFT
+  */
+  if(currentIndex === 0){
+
+    prevBtn.style.opacity = "0";
+    prevBtn.style.pointerEvents = "none";
+
+  }
+
+  else{
+
+    prevBtn.style.opacity = "1";
+    prevBtn.style.pointerEvents = "auto";
+
+  }
+
+
+
+
+  /*
+    HIDE RIGHT
+  */
+  if(currentIndex === slides.length - 1){
+
+    nextBtn.style.opacity = "0";
+    nextBtn.style.pointerEvents = "none";
+
+  }
+
+  else{
+
+    nextBtn.style.opacity = "1";
+    nextBtn.style.pointerEvents = "auto";
+
+  }
+
+}
+
+
+
+
+
+
+/* NEXT */
+nextBtn.addEventListener("click", ()=>{
+
+  if(currentIndex < slides.length - 1){
+
+    currentIndex++;
+
+    updateCarousel();
+
+  }
+
+});
+
+
+
+
+/* PREV */
+prevBtn.addEventListener("click", ()=>{
+
+  if(currentIndex > 0){
+
+    currentIndex--;
+
+    updateCarousel();
+
+  }
+
+});
+
+
+
+
+/* DOT CLICK */
+dots.forEach((dot, index)=>{
+
+  dot.addEventListener("click", ()=>{
+
+    currentIndex = index;
+
+    updateCarousel();
+
+  });
+
+});
+
+
+
+
+/* RESIZE */
+window.addEventListener("resize", ()=>{
+
+  updateCarousel();
+
+});
+
+
+/* =========================
+   NATIVE IPHONE GALLERY
+========================= */
+
+let dragStartX = 0;
+let dragStartY = 0;
+
+let currentDragX = 0;
+
+let movedBy = 0;
+
+let isDraggingCarousel = false;
+
+
+
+
+
+/* TOUCH START */
+carouselContainer.addEventListener("touchstart", (e)=>{
+
+  if(e.touches.length > 1){
+    isDraggingCarousel = false;
+    document.body.classList.remove("no-scroll");
+    return;
+  }
+
+  dragStartX =
+    e.touches[0].clientX;
+
+  dragStartY =
+    e.touches[0].clientY;
+
+  movedBy = 0;
+
+  isDraggingCarousel = false;
+
+}, { passive:true });
+
+
+
+
+
+
+
+/* TOUCH MOVE */
+carouselContainer.addEventListener("touchmove", (e)=>{
+
+  if(e.touches.length > 1){
+    return;
+  }
+
+  currentDragX =
+    e.touches[0].clientX;
+
+  const currentY =
+    e.touches[0].clientY;
+
+
+
+  const diffX =
+    currentDragX - dragStartX;
+
+  const diffY =
+    currentY - dragStartY;
+
+
+
+
+
+  /*
+    Kalau vertical lebih dominan,
+    biarkan scroll page normal
+  */
+  if(
+    !isDraggingCarousel
+    &&
+    Math.abs(diffY) > Math.abs(diffX)
+  ){
+    return;
+  }
+
+
+
+
+
+
+  /*
+    Mulai horizontal drag
+  */
+  isDraggingCarousel = true;
+
+
+  /*
+  LOCK PAGE SCROLL
+  */
+  document.body.classList.add("no-scroll");
+
+
+
+  /*
+    Prevent vertical scroll
+  */
+  e.preventDefault();
+
+
+
+
+
+  movedBy = diffX;
+
+
+
+
+
+  /*
+    EDGE RESISTANCE
+    supaya terasa seperti iPhone
+  */
+  let resistance = 1;
+
+  if(
+    (currentIndex === 0 && movedBy > 0)
+    ||
+    (
+      currentIndex === slides.length - 1
+      &&
+      movedBy < 0
+    )
+  ){
+
+    resistance = 0.18;
+
+  }
+
+
+
+
+
+
+  track.style.transition = "none";
+
+
+
+
+  track.style.transform =
+    `translateX(${currentTranslate + (movedBy * resistance)}px)`;
+
+}, { passive:false });
+
+
+
+
+
+
+
+
+/* TOUCH END */
+carouselContainer.addEventListener("touchend", ()=>{
+
+
+if(!isDraggingCarousel){
+
+  document.body.classList.remove("no-scroll");
+
+  return;
+
+}
+
+
+
+
+
+  /*
+    SWIPE LEFT
+  */
+  if(movedBy < -65){
+
+    if(currentIndex < slides.length - 1){
+
+      currentIndex++;
+
+    }
+
+  }
+
+
+
+
+
+
+  /*
+    SWIPE RIGHT
+  */
+  else if(movedBy > 65){
+
+    if(currentIndex > 0){
+
+      currentIndex--;
+
+    }
+
+  }
+
+
+
+
+
+
+  movedBy = 0;
+
+
+
+
+
+
+  /*
+    SNAP SMOOTH
+  */
+  updateCarousel(true);
+
+
+
+  /*
+    ENABLE PAGE SCROLL AGAIN
+  */
+  document.body.classList.remove("no-scroll");
+
+
+  isDraggingCarousel = false;
+
+}, { passive:true });
+
+
+
+
+
+
+/* TOUCH CANCEL */
+carouselContainer.addEventListener("touchcancel", ()=>{
+
+  document.body.classList.remove("no-scroll");
+
+  isDraggingCarousel = false;
+
+  updateCarousel(true);
+
+});
+
+
+
+
+
+
+
+/* =========================
+   TRACKPAD SWIPE
+========================= */
+
+let lastSwipeTime = 0;
+
+const SWIPE_COOLDOWN = 420;
+
+const SWIPE_THRESHOLD = 45;
+
+
+
+track.addEventListener("wheel", (e)=>{
+
+  /*
+    Kalau vertical scroll lebih dominan,
+    biarkan page scroll normal
+  */
+  if(Math.abs(e.deltaY) > Math.abs(e.deltaX)){
+    return;
+  }
+
+
+
+  /*
+    Block horizontal swipe browser
+  */
+  e.preventDefault();
+
+
+
+
+  const now = Date.now();
+
+
+
+
+  /*
+    Prevent multiple slide
+    dalam 1 gesture
+  */
+  if(now - lastSwipeTime < SWIPE_COOLDOWN){
+    return;
+  }
+
+
+
+
+  /*
+    SWIPE LEFT → NEXT
+  */
+  if(e.deltaX > SWIPE_THRESHOLD){
+
+    if(currentIndex < slides.length - 1){
+
+      currentIndex++;
+
+      updateCarousel();
+
+      lastSwipeTime = now;
+
+    }
+
+  }
+
+
+
+
+  /*
+    SWIPE RIGHT → PREV
+  */
+  else if(e.deltaX < -SWIPE_THRESHOLD){
+
+    if(currentIndex > 0){
+
+      currentIndex--;
+
+      updateCarousel();
+
+      lastSwipeTime = now;
+
+    }
+
+  }
+
+}, { passive:false });
+
+
+
+
+function getTranslateX(index){
+
+  const slideWidth =
+    slides[0].offsetWidth;
+
+  const screenWidth =
+    window.innerWidth;
+
+  return (
+    (screenWidth / 2)
+    -
+    (slideWidth / 2)
+    -
+    (index * slideWidth)
+  );
+
+}
+
+
+
+
+
+/* INITIAL */
+updateCarousel();
+
+
+
+
+</script>
+
+
+<script>
+
+const waButtons =
+  document.querySelectorAll(".waButton");
+
+
+
+waButtons.forEach((button)=>{
+
+  button.addEventListener("click", ()=>{
+
+    /*
+      AMBIL DATA
+    */
+    const title =
+      button.dataset.title;
+
+    const location =
+      button.dataset.location;
+
+    const size =
+      button.dataset.size;
+
+
+
+
+
+    /*
+      MESSAGE
+    */
+    const message =
+      `Halo, saya melihat info tentang ${title} di ${location}, Luas ${size}. Bisa kirim informasi lengkap?`;
+
+
+
+
+
+    /*
+      ENCODE URL
+    */
+    const encodedMessage =
+      encodeURIComponent(message);
+
+
+
+
+
+    /*
+      NOMOR WHATSAPP
+    */
+    const phoneNumber =
+      "6281234567890";
+
+
+
+
+
+    /*
+      OPEN WHATSAPP
+    */
+    window.open(
+
+      `https://wa.me/${phoneNumber}?text=${encodedMessage}`,
+
+      "_blank"
+
+    );
+
+  });
+
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
